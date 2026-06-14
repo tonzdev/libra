@@ -24,7 +24,7 @@ function Submit(props: any) {
       <Typography variant="body1"><i>@big-fin-tech</i>, if you're reading this please consider adopting this idea</Typography>
       <Typography variant="body1">together we can close the gap to zero</Typography>
       <Typography variant="body1">
-        <Link href="https://github.com/mcteamster/libra" target="_blank" rel="noopener" fontWeight={"bold"}>GitHub</Link>
+        <Link href="https://github.com/tonzdev/libra" target="_blank" rel="noopener" fontWeight={"bold"}>GitHub</Link>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <Link href="https://tonz.io/blog/3.html" target="_blank" rel="noopener" fontWeight={"bold"}>Dev Blog</Link>
       </Typography>
