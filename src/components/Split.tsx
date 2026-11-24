@@ -2,10 +2,7 @@ import { useState } from 'react'
 import useMediaQuery from "../hooks/useMediaQuery";
 import { Box, Button, Paper, Stack, Typography, TextField, InputAdornment } from '@mui/material';
 import Payee from './Payee';
-import BalanceIcon from '@mui/icons-material/Balance';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
-import PaidIcon from '@mui/icons-material/Paid';
+import { Scale, UserPlus, UserMinus, CircleDollarSign } from 'lucide-react';
 import names from "../data/names.json";
 
 function Split(props: any) {
@@ -49,11 +46,12 @@ function Split(props: any) {
   const styles = {
     box: {
       height: "100%",
+      boxSizing: "border-box",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "flex-start",
       flexDirection: "column",
-      paddingTop: "30px",
+      paddingTop: "24px",
     },
     prompt: {
       textAlign: "center",
@@ -72,28 +70,57 @@ function Split(props: any) {
       overflowY: "scroll",
     }),
     buttons: {
-      marginBottom: "30px",
-      height: "40px",
+      marginBottom: "24px",
+      height: "48px",
       width: "100%",
       display: "flex",
       flexDirection: "row",
-      alignItems: "space-around",
-      justifyContent: "space-around",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "12px",
     },
     personButton: {
-      minWidth: "32px",
-      minHeight: "32px",
-      paddingBottom: "1em",
+      width: "44px",
+      minWidth: "44px",
+      height: "44px",
+      minHeight: "44px",
+      padding: 0,
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      lineHeight: 1,
     },
     splitButton: {
-      height: "32px",
-      display: "flex",
-      alignItems: "flex-start",
+      width: "116px",
+      minWidth: "116px",
+      height: "44px",
+      padding: "0 12px",
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "8px",
+      lineHeight: 1,
+      "& .MuiButton-endIcon": {
+        display: "inline-flex",
+        alignItems: "center",
+        margin: 0,
+      },
     },
     equalityButton: {
-      height: "32px",
-      display: "flex",
-      alignItems: "flex-start",
+      width: "116px",
+      minWidth: "116px",
+      height: "44px",
+      padding: "0 12px",
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "8px",
+      lineHeight: 1,
+      "& .MuiButton-startIcon": {
+        display: "inline-flex",
+        alignItems: "center",
+        margin: 0,
+      },
     }
   }
 
@@ -131,6 +158,7 @@ function Split(props: any) {
           </Stack>
           <Stack direction="row" spacing={1}>
             <Button
+              aria-label="Add payee"
               color="primary"
               sx={styles.personButton}
               onClick={() => {
@@ -138,8 +166,9 @@ function Split(props: any) {
                 splitAmounts(amount, equality)
                 setPayees([...payees]);
               }}
-            ><PersonAddIcon /></Button>
+            ><UserPlus size={24} /></Button>
             <Button
+              aria-label="Remove payee"
               color="error"
               sx={styles.personButton}
               onClick={() => {
@@ -149,14 +178,14 @@ function Split(props: any) {
                   setPayees([...payees]);
                 }
               }}
-            ><PersonRemoveIcon /></Button>
+            ><UserMinus size={24} /></Button>
           </Stack>
         </Stack>
       </Box>
       <Box sx={styles.buttons}>
         <Button
           sx={styles.equalityButton}
-          startIcon={<BalanceIcon />}
+          startIcon={<Scale size={24} />}
           variant={equality ? "contained" : "outlined"}
           color="primary"
           onClick={() => {
@@ -170,7 +199,7 @@ function Split(props: any) {
           sx={styles.splitButton}
           variant="contained"
           color="primary"
-          endIcon={<PaidIcon />}
+          endIcon={<CircleDollarSign size={24} />}
           onClick={() => {
             props.setScreen(1);
           }}>
